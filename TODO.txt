@@ -1,0 +1,13 @@
+write interface - Luke
+  write functions headers based on what type of caches we expect
+    average rating per movie
+    average rating per user
+    combine these two in an average.
+  function header for reading in data
+  function header for writing out data
+write unit tests - Luke
+implement - Katie
+  fill in functions
+acceptance tests - Katie
+caches
+  create caches, or steal from piazza.
