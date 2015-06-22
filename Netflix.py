@@ -11,7 +11,7 @@ def netflix_read (s) :
     """
     s a string, either the movie ID or the customer ID
     returns nothing. updates global masterlist, which is a list of lists; each
-      sublist containing the movie id as the first element, and the customer 
+      sublist containing the movie id as the first element, and the customer
       ids as the following elements.
     """
 
@@ -89,3 +89,13 @@ def netflix_solve (r, w) :
       movieid = arr[0]
       netflix_print(w, movieid, arr, len(arr), "rmse")
       count += 1
+
+# ----------------------
+# netflix_rmse
+# ----------------------
+def netflix_rmse (ours,theirs):
+    """
+    ours is our calculated movie rating value
+    theirs is the given value
+    returns rmse
+    """
