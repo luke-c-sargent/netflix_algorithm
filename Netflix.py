@@ -2,6 +2,8 @@
 
 masterlist = []
 sublist = []
+rmsAccumulator=0
+rmsCounter=0
 
 # ------------
 # netflix_read
@@ -17,6 +19,8 @@ def netflix_read (s) :
 
     global masterlist
     global sublist
+    global rmsAccumulator # add to this the squared diff of values
+    global rmsCounter #increment this by one after calc'ing above
 
     listcopy = sublist[:]
 
@@ -93,9 +97,13 @@ def netflix_solve (r, w) :
 # ----------------------
 # netflix_rmse
 # ----------------------
-def netflix_rmse (ours,theirs):
+def netflix_rmse ():
     """
     ours is our calculated movie rating value
     theirs is the given value
     returns rmse
     """
+    global rmsAccumulator
+    global rmsCounter
+    r = rmsAccumulator/rmsCounter
+    return sqrt(r)
