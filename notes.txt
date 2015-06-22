@@ -1,0 +1,9 @@
+scan through 18000 files user ratings for each movie
+scan through movie titles
+
+put these into one cache.txt file
+save it into a file with cPickle
+
+load from cache.txt into data structure
+
+semur.nabiev@gmail.com
