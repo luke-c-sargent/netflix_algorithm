@@ -93,7 +93,11 @@ def netflix_eval (masterlist) :
 #        print("User average rating: " + str(userrating) + "user variance: " + str(uservar))
         solution = solutionsdd[str(customer)]
 #        print("Customer = " + str(customer) + "solution = " + str(solution))
-        prediction = (movieavg + userrating) / 2
+        if uservar == 0 :
+          prediction = userrating
+        else :
+          #TODO we need to add the variance as a weight
+          prediction = (movieavg + userrating) / 2
 
         sublist[index] = prediction
 #        print("prediction = " + str(prediction))
