@@ -87,9 +87,13 @@ def netflix_eval (masterlist) :
 
       for index, i in enumerate(itersublist, start = 1) :
         customer = i
+        useravgdd = useravgd[str(customer)]
+        userrating = useravgdd[0]
+        uservar = useravgdd[1]
+#        print("User average rating: " + str(userrating) + "user variance: " + str(uservar))
         solution = solutionsdd[str(customer)]
 #        print("Customer = " + str(customer) + "solution = " + str(solution))
-        prediction = movieavg
+        prediction = (movieavg + userrating) / 2
 
         sublist[index] = prediction
 #        print("prediction = " + str(prediction))
