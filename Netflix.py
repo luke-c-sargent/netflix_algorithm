@@ -2,6 +2,7 @@
 
 import json
 from numpy import square, sqrt, subtract, clip, mean
+from urllib.request import urlopen
 
 rmsAccumulator=0
 rmsCounter=0
@@ -48,18 +49,18 @@ def netflix_eval (masterlist) :
     global rmsAccumulator # add to this the squared diff of values
     global rmsCounter #increment this by one after calc'ing above
 
-    movieavgfile = open('http://www.cs.utexas.edu/~ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json')
-    movied = json.load(movieavgfile, object_pairs_hook = dict)
+    movieavgfile = urlopen("http://www.cs.utexas.edu/~ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json")
+    movied = json.loads(movieavgfile.read().decode(movieavgfile.info().get_param('charset') or 'utf-8'), object_pairs_hook = dict)
     movieavgfile.close()
     
-    useravgfile = open('http://www.cs.utexas.edu/~ebanner/netflix-tests/ezo55-Average_Viewer_Rating_And_Variance_Cache.json')
-    useravgd = json.load(useravgfile, object_pairs_hook = dict)
+    useravgfile = urlopen("http://www.cs.utexas.edu/~ebanner/netflix-tests/ezo55-Average_Viewer_Rating_And_Variance_Cache.json")
+    useravgd = json.loads(useravgfile.read().decode(useravgfile.info().get_param('charset') or 'utf-8'), object_pairs_hook = dict)
     useravgfile.close()
 
     maxVariance=max([int(j) for i,j in useravgd.values()])
     avgRating=mean([int(i) for i in movied.values()])
-    solutions = open('http://www.cs.utexas.edu/~ebanner/netflix-tests/pam2599-probe_solutions.json')
-    solutionsd = json.load(solutions, object_pairs_hook = dict)
+    solutions = urlopen("http://www.cs.utexas.edu/~ebanner/netflix-tests/pam2599-probe_solutions.json")
+    solutionsd = json.loads(solutions.read().decode(solutions.info().get_param('charset') or 'utf-8'), object_pairs_hook = dict)
     solutions.close()
 
     predictionlist = []
