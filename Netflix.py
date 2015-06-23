@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+from collections import OrderedDict
+import json
+#import os
+
 # ------------
 # netflix_read
 # ------------
@@ -35,13 +39,18 @@ def netflix_read (r) :
 # netflix_eval
 # ------------
 
-def netflix_eval (i, j) :
+def netflix_eval (masterlist) :
     """
-    i the ???
-    j the ???
-    return ???
     """
-    # <your code>
+    movieavg = open('/u/ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json')
+    movied = json.load(movieavg, object_pairs_hook = dict)
+    movieavg.close()
+    
+    solutions = open('/u/klt713/CS373/p2/cs373-netflix/solutions-trial.json')
+    solutionsd = json.load(solutions, object_pairs_hook = dict)
+    solutions.close()
+
+    print(solutionsd)
     return 1
 
 # -------------
@@ -84,7 +93,9 @@ def netflix_solve (r, w) :
       movieid = arr[0]
       netflix_print(w, movieid, arr, len(arr))
       count += 1
-    
+  
+    netflix_eval(masterlist)
+
     rmse = netflix_rmse(1, 2)
     w.write("rmse = " + str(rmse) + "\n")
 
