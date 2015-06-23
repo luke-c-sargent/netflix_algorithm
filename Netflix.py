@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 
-masterlist = []
-sublist = []
-
 # ------------
 # netflix_read
 # ------------
 
-def netflix_read (s) :
+def netflix_read (r) :
     """
     s a string, either the movie ID or the customer ID
     returns nothing. updates global masterlist, which is a list of lists; each
@@ -15,20 +12,24 @@ def netflix_read (s) :
       ids as the following elements.
     """
 
-    global masterlist
-    global sublist
+    sublist = []
+    masterlist = []
+    s1 = r.readline()
+    s2 = s1.replace(":\n", "")
+    sublist.append(int(s2))
 
-    listcopy = sublist[:]
+    for s in r :
+      if ":" in s or s == "\n":
+        masterlist.append(sublist)
+        sublist = []
+        strnocolon = s.replace(":", "")
+        sublist.append(int(strnocolon))
+      else :
+        sublist.append(int(s))
+   
+    masterlist.append(sublist)
 
-    if ":" in s :
-      if len(listcopy) > 0 :
-        masterlist.append(listcopy)
-      sublist = []
-      strnocolon = s.replace(":", "")
-      sublist.append(int(strnocolon))
-    else :
-      sublist.append(int(s))
-
+    return masterlist
 
 # ------------
 # netflix_eval
@@ -47,7 +48,7 @@ def netflix_eval (i, j) :
 # netflix_print
 # -------------
 
-def netflix_print (w, movieid, ratings, i, rmse) :
+def netflix_print (w, movieid, ratings, i) :
     """
     print three ints
     w         a writer
@@ -56,15 +57,12 @@ def netflix_print (w, movieid, ratings, i, rmse) :
     length    the number of ratings in the array
     rmse      the root mean square error
     """
-    w.write(str(movieid) + ":")
-    count = 0
+    w.write(str(movieid) + ":\n")
+    count = 1
     length = len(ratings)
     while (count < length) :
-#      print("hi");
       w.write(str(ratings[count]) + "\n")
       count += 1
-
-    w.write("RMSE: " + rmse)
 
 # -------------
 # netflix_solve
@@ -75,20 +73,20 @@ def netflix_solve (r, w) :
     r a reader
     w a writer
     """
-    global masterlist
-
-    for s in r :
-        netflix_read(s)
-
+    masterlist = netflix_read(r)
+    
     length = len(masterlist)
-    count = 0
 
+    count = 0
     while (count < length) :
       #do stuff
       arr = masterlist[count]
       movieid = arr[0]
-      netflix_print(w, movieid, arr, len(arr), "rmse")
+      netflix_print(w, movieid, arr, len(arr))
       count += 1
+    
+    rmse = netflix_rmse(1, 2)
+    w.write("rmse = " + str(rmse) + "\n")
 
 # ----------------------
 # netflix_rmse
@@ -99,3 +97,5 @@ def netflix_rmse (ours,theirs):
     theirs is the given value
     returns rmse
     """
+    return 1
+

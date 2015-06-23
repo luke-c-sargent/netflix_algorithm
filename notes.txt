@@ -21,3 +21,9 @@ general solution:
   accumulator, add 1 to size accumulator
 6. after all tabulations, perform RMSE on diff/size (sqrt of mean)
 7. output solutions with RMSE at the end to std:out
+
+travis CI - luke
+basic functionality - non optimized - katie
+unit tests - luke
+
+
