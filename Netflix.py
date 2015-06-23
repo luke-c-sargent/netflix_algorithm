@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-from collections import OrderedDict
 import json
-#import os
+rmsAccumulator=0
+rmsCounter=0
 
 # ------------
 # netflix_read
@@ -16,6 +16,8 @@ def netflix_read (r) :
       ids as the following elements.
     """
 
+    global rmsAccumulator # add to this the squared diff of values
+    global rmsCounter #increment this by one after calc'ing above
     sublist = []
     masterlist = []
     s1 = r.readline()
@@ -102,11 +104,12 @@ def netflix_solve (r, w) :
 # ----------------------
 # netflix_rmse
 # ----------------------
-def netflix_rmse (ours,theirs):
+def netflix_rmse ():
     """
-    ours is our calculated movie rating value
-    theirs is the given value
-    returns rmse
+    globals that have been accumulating values
+    have final calculations performed on them
     """
-    return 1
-
+    global rmsAccumulator
+    global rmsCounter
+    r = rmsAccumulator/rmsCounter
+    return sqrt(r)
