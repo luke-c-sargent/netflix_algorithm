@@ -98,7 +98,7 @@ def netflix_solve (r, w) :
   
     netflix_eval(masterlist)
 
-    rmse = netflix_rmse(1, 2)
+    rmse = netflix_rmse()
     w.write("rmse = " + str(rmse) + "\n")
 
 # ----------------------
@@ -111,5 +111,6 @@ def netflix_rmse ():
     """
     global rmsAccumulator
     global rmsCounter
-    r = rmsAccumulator/rmsCounter
-    return sqrt(r)
+#    r = rmsAccumulator/rmsCounter
+#    return sqrt(r)
+    return 1
