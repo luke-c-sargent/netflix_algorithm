@@ -35,7 +35,7 @@ config:
 
 test: RunNetflix.out TestNetflix.out
 
-Netflix-tests:
+netflix-tests:
 	git clone https://github.com/cs373-summer-2015/netflix-tests.git
 
 Netflix.html: Netflix.py
@@ -53,15 +53,3 @@ TestNetflix.out: TestNetflix.py
 	coverage3 run    --branch TestNetflix.py >  TestNetflix.out 2>&1
 	coverage3 report -m                      >> TestNetflix.out
 	cat TestNetflix.out
-
-lcs2239test: lcs2239-RunNetflix.out lcs2239-TestNetflix.out
-
-lcs2239-RunNetflix.out: RunNetflix.py
-	cat lcs2239-RunNetflix.in
-	./RunNetflix.py < lcs2239-RunNetflix.in > lcs2239-RunNetflix.out
-	cat lcs2239-RunNetflix.out
-
-lcs2239-TestNetflix.out: lcs2239-TestNetflix.py
-	coverage3 run    --branch lcs2239-TestNetflix.py >  lcs2239-TestNetflix.out 2>&1
-	coverage3 report -m                      >> lcs2239-TestNetflix.out
-	cat lcs2239-TestNetflix.out

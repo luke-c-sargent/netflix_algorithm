@@ -99,9 +99,8 @@ def netflix_solve (r, w) :
 # ----------------------
 def netflix_rmse ():
     """
-    ours is our calculated movie rating value
-    theirs is the given value
-    returns rmse
+    globals that have been accumulating values
+    have final calculations performed on them
     """
     global rmsAccumulator
     global rmsCounter
