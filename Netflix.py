@@ -56,33 +56,38 @@ def netflix_eval (masterlist) :
     solutionsd = json.load(solutions, object_pairs_hook = dict)
     solutions.close()
 
+    predictionlist = []
+    predictionsublist = []
+
     #each sublist in masterlist is a movie that we want to predict the rating of
     for sublist in masterlist :
+
       #key is the movie number
       key = sublist[0]
-#      print("Key = " + str(key))
+#      predictionsublist.append(key)
 
       #movieavg is the average rating of this movie
       movieavg = movied[str(key)]
       assert type(movieavg) is float
 #      print("movied = " + str(movied))
-      print("key = " + str(key) + ", movie average = " + str(movieavg))
+#      print("key = " + str(key) + ", movie average = " + str(movieavg))
 
       #solutiondd is the "customer: correct rating" pair list for this movie
       solutionsdd = solutionsd[str(key)]
-      print("solutionsdd = " + str(solutionsdd))
+#      print("solutionsdd = " + str(solutionsdd))
       itersublist = iter(sublist)
-      
-      #next(itersublist) is the same thing as key (it's the movie ID)
       next(itersublist)
+      
+      #listsublist = list(itersublist)
+      #next(itersublist) is the same thing as key (it's the movie ID)
 
-#          print("solution = " + str(solutiondd))
-      for i in itersublist :
+      for index, i in enumerate(itersublist, start = 1) :
         customer = i
-        print("Customer = " + str(customer))
         solution = solutionsdd[str(customer)]
-        print("solution = " + str(solution))
-        prediction = movieavg 
+#        print("Customer = " + str(customer) + "solution = " + str(solution))
+        prediction = movieavg
+
+        sublist[index] = prediction
 #        print("prediction = " + str(prediction))
         diffsquared = square(subtract(prediction, solution))
 #        print("diffsquared = " + str(diffsquared))
@@ -90,7 +95,7 @@ def netflix_eval (masterlist) :
         rmsCounter += 1
 
 #    print(solutionsd)
-    return 1
+    return masterlist
 
 # -------------
 # netflix_print
@@ -109,7 +114,9 @@ def netflix_print (w, movieid, ratings, i) :
     count = 1
     length = len(ratings)
     while (count < length) :
-      w.write(str(ratings[count]) + "\n")
+      formattedfloat = "{0:.1f}".format(ratings[count])
+#      w.write(str(ratings[count]) + "\n")
+      w.write(str(formattedfloat) + "\n")
       count += 1
 
 # -------------
@@ -125,18 +132,19 @@ def netflix_solve (r, w) :
     
     length = len(masterlist)
 
+    predictionlist = netflix_eval(masterlist)
+    
     count = 0
     while (count < length) :
       #do stuff
-      arr = masterlist[count]
+      arr = predictionlist[count]
       movieid = arr[0]
       netflix_print(w, movieid, arr, len(arr))
       count += 1
   
-    netflix_eval(masterlist)
 
     rmse = netflix_rmse()
-    w.write("rmse = " + str(rmse) + "\n")
+    w.write("RMSE: " + str(rmse) + "\n")
 
 # ----------------------
 # netflix_rmse
@@ -148,6 +156,10 @@ def netflix_rmse ():
     """
     global rmsAccumulator
     global rmsCounter
-    print("rmsAccumulator = " + str(rmsAccumulator))
+#    print("rmsAccumulator = " + str(rmsAccumulator))
     r = rmsAccumulator/rmsCounter
-    return sqrt(r)
+    
+    root = sqrt(r)
+    formattedroot = "{0:.2f}".format(root)
+
+    return formattedroot
