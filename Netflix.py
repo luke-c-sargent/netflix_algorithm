@@ -48,15 +48,15 @@ def netflix_eval (masterlist) :
     global rmsAccumulator # add to this the squared diff of values
     global rmsCounter #increment this by one after calc'ing above
 
-    movieavgfile = open('/u/ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json')
+    movieavgfile = open('http://www.cs.utexas.edu/~ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json')
     movied = json.load(movieavgfile, object_pairs_hook = dict)
     movieavgfile.close()
     
-    useravgfile = open('/u/ebanner/netflix-tests/ezo55-Average_Viewer_Rating_And_Variance_Cache.json')
+    useravgfile = open('http://www.cs.utexas.edu/~ebanner/netflix-tests/ezo55-Average_Viewer_Rating_And_Variance_Cache.json')
     useravgd = json.load(useravgfile, object_pairs_hook = dict)
     useravgfile.close()
     
-    solutions = open('/u/ebanner/netflix-tests/pam2599-probe_solutions.json')
+    solutions = open('http://www.cs.utexas.edu/~ebanner/netflix-tests/pam2599-probe_solutions.json')
     solutionsd = json.load(solutions, object_pairs_hook = dict)
     solutions.close()
 
