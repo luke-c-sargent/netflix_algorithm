@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 import json
+from numpy import square, sqrt, subtract
+
 rmsAccumulator=0
 rmsCounter=0
 
@@ -16,8 +18,6 @@ def netflix_read (r) :
       ids as the following elements.
     """
 
-    global rmsAccumulator # add to this the squared diff of values
-    global rmsCounter #increment this by one after calc'ing above
     sublist = []
     masterlist = []
     s1 = r.readline()
@@ -44,15 +44,37 @@ def netflix_read (r) :
 def netflix_eval (masterlist) :
     """
     """
-    movieavg = open('/u/ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json')
-    movied = json.load(movieavg, object_pairs_hook = dict)
-    movieavg.close()
+
+    global rmsAccumulator # add to this the squared diff of values
+    global rmsCounter #increment this by one after calc'ing above
+
+    movieavgfile = open('/u/ebanner/netflix-tests/BRG564-Average_Movie_Rating_Cache.json')
+    movied = json.load(movieavgfile, object_pairs_hook = dict)
+    movieavgfile.close()
     
     solutions = open('/u/klt713/CS373/p2/cs373-netflix/solutions-trial.json')
     solutionsd = json.load(solutions, object_pairs_hook = dict)
     solutions.close()
 
-    print(solutionsd)
+    #each sublist in masterlist is a movie that we want to predict the rating of
+    for sublist in masterlist :
+      key = sublist[0]
+      #movieavg is the average rating of this movie
+      movieavg = movied[str(key)]
+      assert type(movieavg) is float
+      print("movie average = " + str(movieavg))
+      #solutionlist is the "customer: correct rating" pair list for this movie
+      solutionlist = solutionsd[str(key)]
+      solution = 0 #TODO
+      print("solution = " + str(solutionlist))
+      prediction = movieavg + 1
+      print("prediction = " + str(prediction))
+      diffsquared = square(subtract(prediction, solution))
+      print("diffsquared = " + str(diffsquared))
+      rmsAccumulator += diffsquared
+      rmsCounter += 1
+
+#    print(solutionsd)
     return 1
 
 # -------------
@@ -111,6 +133,6 @@ def netflix_rmse ():
     """
     global rmsAccumulator
     global rmsCounter
-#    r = rmsAccumulator/rmsCounter
-#    return sqrt(r)
-    return 1
+    print("rmsAccumulator = " + str(rmsAccumulator))
+    r = rmsAccumulator/rmsCounter
+    return sqrt(r)
