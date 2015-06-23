@@ -52,7 +52,11 @@ def netflix_eval (masterlist) :
     movied = json.load(movieavgfile, object_pairs_hook = dict)
     movieavgfile.close()
     
-    solutions = open('/u/klt713/CS373/p2/cs373-netflix/solutions-trial.json')
+    useravgfile = open('/u/ebanner/netflix-tests/ezo55-Average_Viewer_Rating_And_Variance_Cache.json')
+    useravgd = json.load(useravgfile, object_pairs_hook = dict)
+    useravgfile.close()
+    
+    solutions = open('/u/ebanner/netflix-tests/pam2599-probe_solutions.json')
     solutionsd = json.load(solutions, object_pairs_hook = dict)
     solutions.close()
 
