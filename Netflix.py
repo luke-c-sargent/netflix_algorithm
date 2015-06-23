@@ -58,21 +58,36 @@ def netflix_eval (masterlist) :
 
     #each sublist in masterlist is a movie that we want to predict the rating of
     for sublist in masterlist :
+      #key is the movie number
       key = sublist[0]
+#      print("Key = " + str(key))
+
       #movieavg is the average rating of this movie
       movieavg = movied[str(key)]
       assert type(movieavg) is float
-      print("movie average = " + str(movieavg))
-      #solutionlist is the "customer: correct rating" pair list for this movie
-      solutionlist = solutionsd[str(key)]
-      solution = 0 #TODO
-      print("solution = " + str(solutionlist))
-      prediction = movieavg + 1
-      print("prediction = " + str(prediction))
-      diffsquared = square(subtract(prediction, solution))
-      print("diffsquared = " + str(diffsquared))
-      rmsAccumulator += diffsquared
-      rmsCounter += 1
+#      print("movied = " + str(movied))
+      print("key = " + str(key) + ", movie average = " + str(movieavg))
+
+      #solutiondd is the "customer: correct rating" pair list for this movie
+      solutionsdd = solutionsd[str(key)]
+      print("solutionsdd = " + str(solutionsdd))
+      itersublist = iter(sublist)
+      
+      #next(itersublist) is the same thing as key (it's the movie ID)
+      next(itersublist)
+
+#          print("solution = " + str(solutiondd))
+      for i in itersublist :
+        customer = i
+        print("Customer = " + str(customer))
+        solution = solutionsdd[str(customer)]
+        print("solution = " + str(solution))
+        prediction = movieavg 
+#        print("prediction = " + str(prediction))
+        diffsquared = square(subtract(prediction, solution))
+#        print("diffsquared = " + str(diffsquared))
+        rmsAccumulator += diffsquared
+        rmsCounter += 1
 
 #    print(solutionsd)
     return 1
