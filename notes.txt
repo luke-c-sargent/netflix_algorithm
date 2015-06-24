@@ -1,0 +1,29 @@
+scan through 18000 files user ratings for each movie
+scan through movie titles
+
+put these into one cache.txt file
+save it into a file with cPickle
+
+load from cache.txt into data structure
+
+semur.nabiev@gmail.com
+
+
+general solution:
+------------------
+1. grab block of requests from probe (movie: user(s)) // optimal?
+2. get movie average rating
+3. get user average rating for all users
+4. compute user rating from:
+  (movie average * variance modifier + user average* user modifier)
+  where variance modifier + user modifier = 1.0
+5. store answer, compare it to given solution, add abs(difference)^2 to diff
+  accumulator, add 1 to size accumulator
+6. after all tabulations, perform RMSE on diff/size (sqrt of mean)
+7. output solutions with RMSE at the end to std:out
+
+travis CI - luke
+basic functionality - non optimized - katie
+unit tests - luke
+
+
