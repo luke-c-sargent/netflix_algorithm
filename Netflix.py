@@ -97,9 +97,7 @@ def netflix_eval (masterlist) :
         assert type(uservar) is float
 
         solution = solutionsdd[str(customer)]
-        if uservar == 0 :
-          prediction = userrating
-        else :
+        if uservar != 0 :
           modStrength=.6
           userweight=modStrength *((maxVariance-uservar)/maxVariance)
           movieweight=1-userweight
@@ -141,7 +139,7 @@ def netflix_print (w, movieid, ratings, length) :
     assert type(movieid) is int
     assert movieid > 0
     assert type(ratings) is list
-    assert i > 0
+    assert length > 0
 
     w.write(str(movieid) + ":\n")
     count = 1

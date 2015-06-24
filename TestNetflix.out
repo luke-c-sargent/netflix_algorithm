@@ -1,6 +1,11 @@
-Traceback (most recent call last):
-  File "TestNetflix.py", line 19, in <module>
-    from Netflix import netflix_read, netflix_eval, netflix_print, netflix_solve
-  File "/v/filer4b/v38q001/klt713/CS373/p2/cs373-netflix/Netflix.py", line 4, in <module>
-    from numpy import square, sqrt, subtract, clip, mean
-ImportError: No module named 'numpy'
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 17.491s
+
+OK
+Name          Stmts   Miss Branch BrMiss  Cover   Missing
+---------------------------------------------------------
+Netflix         103      0     18      1    99%   
+TestNetflix      82      0      2      1    99%   
+---------------------------------------------------------
+TOTAL           185      0     20      2    99%   
