@@ -126,20 +126,21 @@ def netflix_eval (masterlist) :
 # netflix_print
 # -------------
 
-def netflix_print (w, movieid, ratings, length) :
+def netflix_print (w, movieid, ratings) :
     """
     print three ints
     w         a writer
     movieid   the movie ID number
     ratings   the list of ratings
-    length    the number of ratings in the list
     returns nothing, but prints the movie ID and predicted customer rating
     """
 
     assert type(movieid) is int
     assert movieid > 0
     assert type(ratings) is list
+
     assert length > 0
+
 
     w.write(str(movieid) + ":\n")
     count = 1
@@ -168,7 +169,7 @@ def netflix_solve (r, w) :
       #do stuff
       arr = predictionlist[count]
       movieid = arr[0]
-      netflix_print(w, movieid, arr, len(arr))
+      netflix_print(w, movieid, arr)
       count += 1
 
     assert count > 0
