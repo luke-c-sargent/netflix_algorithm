@@ -139,8 +139,6 @@ def netflix_print (w, movieid, ratings) :
     assert movieid > 0
     assert type(ratings) is list
 
-    assert length > 0
-
 
     w.write(str(movieid) + ":\n")
     count = 1

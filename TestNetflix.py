@@ -72,17 +72,17 @@ class TestNetflix (TestCase) :
 
     def test_print (self) :
         w = StringIO()
-        netflix_print(w, 1, [1,10,11], 3)
+        netflix_print(w, 1, [1,10,11])
         self.assertEqual(w.getvalue(), "1:\n10.0\n11.0\n")
 
     def test_print_2 (self) :
         w = StringIO()
-        netflix_print(w, 2, [1,5,6,6], 4)
+        netflix_print(w, 2, [1,5,6,6])
         self.assertEqual(w.getvalue(), "2:\n5.0\n6.0\n6.0\n")
       
     def test_print_3 (self) :
         w = StringIO()
-        netflix_print(w, 3, [1,7,666], 3)
+        netflix_print(w, 3, [1,7,666])
         self.assertEqual(w.getvalue(), "3:\n7.0\n666.0\n")
 
     # -----
