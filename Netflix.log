@@ -1,0 +1,220 @@
+commit eb8d271bbf28fb53cba2ebbafe3bd2695c47ca23
+Merge: cf2974c bdcc4f5
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Jun 23 21:37:46 2015 -0500
+
+    Merge branch 'dev'
+
+commit bdcc4f53bb7156d16d185cb62c2ece53c1c93107
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Jun 23 21:34:40 2015 -0500
+
+    final upload
+
+commit 9151e5544450b73cbf3f17654fe8913bc9be5e54
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Jun 23 21:18:44 2015 -0500
+
+    merge conflict resolution
+
+commit 01f08486ba42f647342c9f44f0120a36d281c480
+Merge: 980bc56 ce8ed67
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Jun 23 21:13:24 2015 -0500
+
+    unit tests complete, 99% coverage, about to test with travis
+
+commit 980bc563737d98b4d9d3ae5bf59e2bee9c504ee3
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Jun 23 21:10:03 2015 -0500
+
+    unit tests complete, 99% coverage, about to test with travis
+
+commit ce8ed6736f6fe30cfd266a7174b6104049c42e48
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 19:58:12 2015 -0500
+
+    more clean up, trying travis again
+
+commit bb1bbd5f36c9b7f6ada64b10d04781a0f6306f0c
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 19:50:13 2015 -0500
+
+    Netflix.html done. Netflix.py cleaned up.
+
+commit 980b93ec17ea18324532b0a65769fbaa68561823
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 19:25:01 2015 -0500
+
+    added omit flag in makefile
+
+commit 983b9b3698927280a66875c0fc46b76d0a3641b3
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 19:05:53 2015 -0500
+
+    just kidding, now it should work
+
+commit 38e2184b43ce8d3c3b93e35c1611399a3587421d
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 19:01:26 2015 -0500
+
+    think travis is gonna work this time
+
+commit de1b99d66aeece732a0a65d345c0c81ffec24440
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 18:52:41 2015 -0500
+
+    some files got left out
+
+commit 6e776b2f6fe72d0a5d0ba3bcc0b89d36abd112fd
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 18:51:58 2015 -0500
+
+    gonna try travis again
+
+commit 4ac876be42b40213accd1f335d71ce9434e4a771
+Merge: da86334 a858fac
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 18:26:40 2015 -0500
+
+    merging
+
+commit da86334b028b99fc1d52ccf019a15e1d3a159ece
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 18:21:38 2015 -0500
+
+    gonna try to get travis CI working...
+
+commit a858facfe426e94e9c5de891bbabcf61dc1d9ae9
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Tue Jun 23 18:21:10 2015 -0500
+
+    RMSE == 0.99
+
+commit 6445baa7a5c7953acee550221763157d50779514
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 11:03:00 2015 -0500
+
+    super close... just need to manipulate the variance so we can use it as a weight. Everything is set up for this; just look for the TODO. just need to work on that one line.
+
+commit 9ebbba8dcb5e2b1143c03c34ae633bd85614f80a
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 10:55:09 2015 -0500
+
+    Now using a combination of movie avg/user avg. RMSE = 1.00
+
+commit 8d8f8c6aeaf8e91261cf101ff3b833fb5f40a04b
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 10:40:45 2015 -0500
+
+    adding probe files
+
+commit 6a3a50989d4b67a77b906d5d9ecdd049c347c188
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 10:40:16 2015 -0500
+
+    changed the file sources. Now running probe.txt in less than 1 minute. Just need to get the RMSE < 1.0
+
+commit 619d5c8e754733596296449e062454fb40ec9daa
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 10:30:01 2015 -0500
+
+    now outputting what we need in the correct format
+
+commit ed3c42ddee1e06a1e6d8cb672081b8237eca219f
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Tue Jun 23 10:02:33 2015 -0500
+
+    now using predictions based on average movie rating
+
+commit 612edcf1c6719f498dad93c205194c526a03aeba
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Mon Jun 22 23:35:50 2015 -0500
+
+    nearly complete with the basic functionality code. Done for the night.
+
+commit 6a199a928cdd151ec7d8dec4910e21d496d859df
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Mon Jun 22 22:32:26 2015 -0500
+
+    getting rid of errors after merge; Netflix.py is running again
+
+commit afe6dd4d88c6c1c8e70e18dc3be3ef498389af61
+Merge: 17ab7b7 fe70598
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Mon Jun 22 22:29:47 2015 -0500
+
+    merging
+
+commit 17ab7b7dbe6a47febc900d0095cb6c89d897d93f
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Mon Jun 22 22:19:21 2015 -0500
+
+    working on eval - currently reading in JSON files and transforming them to dict
+
+commit fe7059877d8026167a7419043bfe44bde1e11e98
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Mon Jun 22 21:56:24 2015 -0500
+
+    travis-ci test ~passed~ though still need to debug
+
+commit 153e48aecc4812c55472a50528875f00891fa385
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Mon Jun 22 21:49:01 2015 -0500
+
+    minor travis yml changes, makefile changes
+
+commit a5549858cf87cc67e1f949f31e5b6d314b925eec
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Mon Jun 22 21:10:39 2015 -0500
+
+    fixed read, fixed write, now onto calculations
+
+commit 4d43d72dd6396d8f5cdcc545880eed838e433f5f
+Merge: ec4cc47 6ef6205
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Mon Jun 22 16:02:56 2015 -0500
+
+    Merge branch 'dev' of https://github.com/luke-c-sargent/cs373-netflix into dev
+
+commit ec4cc47cdb3c5f7f04d16296e704e198cfa18fd8
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Mon Jun 22 16:01:28 2015 -0500
+
+    RMSE improvements
+
+commit 6ef62050be279d99d3000b6020ae273281bc9b1d
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Mon Jun 22 15:58:39 2015 -0500
+
+    added caches, working on notes
+
+commit c21b2fc3f38d3269c84dafb8b5e5d5dfab4357a9
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Mon Jun 22 15:56:35 2015 -0500
+
+    more verbose notes
+
+commit c95e0899c627de8d0e875e2fe79a4c95d1371ed4
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Mon Jun 22 14:48:38 2015 -0500
+
+    workinen
+
+commit 55451cf0d37e1a4b0cf60384a80c6398492604c4
+Author: Luke <luke.c.sargent@gmail.com>
+Date:   Sun Jun 21 16:50:34 2015 -0500
+
+    first draft commit of harness files, travis.yml and makefile
+
+commit cf2974c7ac5ce399168b50c75cf758ff5fcf2377
+Author: Katie Taylor <katie.taylor@utexas.edu>
+Date:   Fri Jun 19 16:00:09 2015 -0500
+
+    pushing TODO
+
+commit e0ac853c7110b8e87f9cd93359bf0f292d5c1fad
+Author: luke-c-sargent <luke.c.sargent@gmail.com>
+Date:   Fri Jun 19 14:49:32 2015 -0500
+
+    Initial commit
