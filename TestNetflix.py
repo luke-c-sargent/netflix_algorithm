@@ -17,7 +17,6 @@ from io       import StringIO
 from unittest import main, TestCase
 
 from Netflix import netflix_read, netflix_eval, netflix_print, netflix_solve
-import numpy
 
 # -----------
 # TestCollatz
