@@ -13,10 +13,10 @@ rmsCounter=0
 
 def netflix_read (r) :
     """
-    s a string, either the movie ID or the customer ID
-    returns nothing. updates global masterlist, which is a list of lists; each
-      sublist containing the movie id as the first element, and the customer
-      ids as the following elements.
+    r - a reader, reads in all movie IDs or customer IDs
+    returns masterlist, which is a list of lists; each sublist containing the 
+      movie id as the first element, and the customer ids as the following 
+      elements.
     """
 
     sublist = []
@@ -44,7 +44,14 @@ def netflix_read (r) :
 
 def netflix_eval (masterlist) :
     """
+    masterlist - the list of sublists. Each sublist contains a movie ID as the
+      first element, and the customer IDs as the following elements.
+    returns the modified masterlist, containing predictions for each movie
+      rating, based on a combination of the average rating per movie, the
+      average rating per user, and the variance of the user's rating history.
     """
+
+    assert type(masterlist) is list
 
     global rmsAccumulator # add to this the squared diff of values
     global rmsCounter #increment this by one after calc'ing above
@@ -71,31 +78,25 @@ def netflix_eval (masterlist) :
 
       #key is the movie number
       key = sublist[0]
-#      predictionsublist.append(key)
 
       #movieavg is the average rating of this movie
       movieavg = movied[str(key)]
       assert type(movieavg) is float
-#      print("movied = " + str(movied))
-#      print("key = " + str(key) + ", movie average = " + str(movieavg))
 
       #solutiondd is the "customer: correct rating" pair list for this movie
       solutionsdd = solutionsd[str(key)]
-#      print("solutionsdd = " + str(solutionsdd))
       itersublist = iter(sublist)
       next(itersublist)
-
-      #listsublist = list(itersublist)
-      #next(itersublist) is the same thing as key (it's the movie ID)
 
       for index, i in enumerate(itersublist, start = 1) :
         customer = i
         useravgdd = useravgd[str(customer)]
         userrating = useravgdd[0]
         uservar = useravgdd[1]
-#        print("User average rating: " + str(userrating) + "user variance: " + str(uservar))
+
+        assert type(uservar) is float
+
         solution = solutionsdd[str(customer)]
-#        print("Customer = " + str(customer) + "solution = " + str(solution))
         if uservar == 0 :
           prediction = userrating
         else :
@@ -111,42 +112,42 @@ def netflix_eval (masterlist) :
           attitude=1+((userrating-avgRating)/5)*tudeMod
 
           kernel=attitude*(movieweight*movieavg + userweight*userrating)
-          #kernel=0.5*movieavg+0.3*userrating+0.2*avgRating
           prediction = clip(kernel,0,5)
 
-
-          #print("mAvg:"+str(movieavg)+" uRating:"+str(userrating)+" uw:"+str(userweight)+" mw:"+str(movieweight))
-          #print("pred:"+str(prediction)+" actual:"+str(solution)+ " var:"+str(uservar)+" a:"+str(attitude))
-
         sublist[index] = prediction
-#        print("prediction = " + str(prediction))
         diffsquared = square(subtract(prediction, solution))
-#        print("diffsquared = " + str(diffsquared))
         rmsAccumulator += diffsquared
         rmsCounter += 1
 
-#    print(solutionsd)
+    assert rmsAccumulator is not None
+    assert rmsCounter > 0
+
     return masterlist
 
 # -------------
 # netflix_print
 # -------------
 
-def netflix_print (w, movieid, ratings, i) :
+def netflix_print (w, movieid, ratings, length) :
     """
     print three ints
     w         a writer
     movieid   the movie ID number
-    ratings   the array of ratings
-    length    the number of ratings in the array
-    rmse      the root mean square error
+    ratings   the list of ratings
+    length    the number of ratings in the list
+    returns nothing, but prints the movie ID and predicted customer rating
     """
+
+    assert type(movieid) is int
+    assert movieid > 0
+    assert type(ratings) is list
+    assert i > 0
+
     w.write(str(movieid) + ":\n")
     count = 1
     length = len(ratings)
     while (count < length) :
       formattedfloat = "{0:.1f}".format(ratings[count])
-#      w.write(str(ratings[count]) + "\n")
       w.write(str(formattedfloat) + "\n")
       count += 1
 
@@ -158,11 +159,10 @@ def netflix_solve (r, w) :
     """
     r a reader
     w a writer
+    performs the netflix prediction calculations, writes out the RMSE.
     """
     masterlist = netflix_read(r)
-
     length = len(masterlist)
-
     predictionlist = netflix_eval(masterlist)
 
     count = 0
@@ -173,8 +173,12 @@ def netflix_solve (r, w) :
       netflix_print(w, movieid, arr, len(arr))
       count += 1
 
+    assert count > 0
 
     rmse = netflix_rmse()
+
+    assert float(rmse) > 0
+    assert type(rmse) is str
     w.write("RMSE: " + str(rmse) + "\n")
 
 # ----------------------
@@ -182,16 +186,20 @@ def netflix_solve (r, w) :
 # ----------------------
 def netflix_rmse ():
     """
-    globals that have been accumulating values
-    have final calculations performed on them
+    returns the RMSE. function performs final calculations on globals that have
+      been accumulating values.
     """
     global rmsAccumulator
     global rmsCounter
-#    print("rmsAccumulator = " + str(rmsAccumulator))
+
+    assert rmsCounter > 0
+    assert rmsAccumulator > 0
+
     r = rmsAccumulator/rmsCounter
 
+    assert r > 0
+
     root = sqrt(r)
-    #formattedroot = "{0:.2f}".format(root)
     root=int(root*100)/100.0
     formattedroot = "{0:.2f}".format(root)
     return formattedroot
